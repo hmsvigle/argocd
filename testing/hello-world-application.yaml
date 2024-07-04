@@ -10,13 +10,13 @@ spec:
     server: "https://kubernetes.default.svc"
   project: default
   source: 
-    path: "/apps/hello-world"
+    path: "/apps/"
     repoURL: "https://github.com/hmsvigle/argocd_helm.git"
     targetRevision: main
     helm:
      releaseName: hello-world
      valueFiles:
-     - 'values.yaml'
+     - 'hello-world/values.yaml'
      - '../environments/stg-values.yaml'     
      - 'environments/stg-values.yaml'
      parameters:
