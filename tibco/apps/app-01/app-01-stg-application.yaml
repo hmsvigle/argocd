@@ -24,8 +24,8 @@ spec:
        value: "app-01"
      - name: appNameGeneric
        value: 'app-01'
-     - name: image.tag
-       value: '01'
+     #- name: image.tag
+     #  value: '01'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
