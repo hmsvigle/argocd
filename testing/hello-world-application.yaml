@@ -1,0 +1,32 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: hello-world
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: stg
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: "apps/hello-world"
+    repoURL: "https://github.com/hmsvigle/argocd_helm.git"
+    targetRevision: main
+    helm:
+     releaseName: hello-world
+     valueFiles:
+     - 'values.yaml'
+     - 'environments/stg-values.yaml'
+     - 'apps/app-01/environments/stg-values.yaml'
+     parameters:
+     - name: appNameGeneric
+       value: 'hello-world'
+     #- name: image.tag
+     #  value: '01'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
