@@ -1,0 +1,26 @@
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world-stg
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: cdev
+  project: default
+  source:
+    repoURL: 'https://github.com/hmsvigle/argocd_helm/'
+    path: 'apps/hello-world'
+    targetRevision: master
+    helm:
+      valueFiles:
+        - '/environments/cdev-values.yaml'
+        - '/apps/mock-authentication/environments/cdev-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
