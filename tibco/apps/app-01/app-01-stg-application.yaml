@@ -16,9 +16,9 @@ spec:
     helm:
      releaseName: app-01
      valueFiles:
-     - 'chart/apps/app-01/values.yaml'
+     - 'apps/app-01/values.yaml'
      - 'environments/stg-values.yaml'
-     - 'chart/apps/app-01/environments/stg-values.yaml'
+     - 'apps/app-01/environments/stg-values.yaml'
      parameters:
      - name: appName
        value: "app-01"
