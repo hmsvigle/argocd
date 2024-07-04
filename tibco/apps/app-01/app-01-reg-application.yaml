@@ -1,0 +1,34 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: app-01-reg
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: reg
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: "chart"
+    repoURL: "https://github.com/hmsvigle/argocd_helm.git"
+    targetRevision: main
+    helm:
+     releaseName: app-01
+     valueFiles:
+     - 'apps/app-01/values.yaml'
+     - 'environments/reg-values.yaml'
+     - 'apps/app-01/environments/reg-values.yaml'
+     parameters:
+     - name: appName
+       value: "app-01"
+     - name: appNameGeneric
+       value: 'app-01'
+     #- name: image.tag
+     #  value: '01'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
