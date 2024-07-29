@@ -14,18 +14,18 @@ spec:
     repoURL: "https://github.com/hmsvigle/argocd_helm.git"
     targetRevision: main
     helm:
-     releaseName: app-01
-     valueFiles:
-     - 'apps/app-01/values.yaml'
-     - 'environments/stg-values.yaml'
-     - 'apps/app-01/environments/stg-values.yaml'
-     parameters:
-     - name: appName
-       value: "app-01"
-     - name: appNameGeneric
-       value: 'app-01'
-     #- name: image.tag
-     #  value: '01'
+      releaseName: app-01
+      valueFiles:
+      - 'apps/app-01/values.yaml'
+      - 'environments/stg-values.yaml'
+      - 'apps/app-01/environments/stg-values.yaml'
+      parameters:
+      - name: appName
+        value: "app-01"
+      - name: appNameGeneric
+        value: 'app-01'
+      #- name: image.tag
+      #  value: '01'
   syncPolicy:
     automated:
       prune: true
