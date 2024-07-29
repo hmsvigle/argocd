@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: stg
+  namespace: argocd
+spec:
+  description: Staging namespaces
+  sourceRepos:
+  - 'https://github.com/hmsvigle/*'
+  destinations:
+  - namespace: stg-tibco
+    server: https://kubernetes.default.svc
+  - namespace: stg-nodejs
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+# SyncPolicy & SyncOptions can not be set with this apiVersion
