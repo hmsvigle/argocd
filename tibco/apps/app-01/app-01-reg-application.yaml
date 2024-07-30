@@ -26,9 +26,9 @@ spec:
        value: 'app-01'
      #- name: image.tag
      #  value: '01'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  #syncPolicy:
+  #  automated:
+  #    prune: true
+  #    selfHeal: true
+  #  syncOptions:
+  #    - CreateNamespace=true
